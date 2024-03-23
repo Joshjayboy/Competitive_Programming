@@ -1,4 +1,4 @@
-def max_consecutive_rings(s):
+def max_consecutive_rings(s): # s= [OOHSSHO]
     max_count = 0
     current_count = 0
 
