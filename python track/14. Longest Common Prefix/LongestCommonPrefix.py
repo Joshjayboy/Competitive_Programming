@@ -17,3 +17,5 @@ class Solution(object):
                     return sequence
                 sequence += first[i]
             return sequence
+
+
