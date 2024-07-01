@@ -1,10 +1,5 @@
-# n, m = map(int, input().split())  
-x = input()
-t = x.split()
-n = int(t[0])
-m = int(t[1])
-# print("this is n", n)
-# print("this is m", m)
+n, m = map(int, input().split())  
+
 matrix = [input().strip() for _ in range(n)]
 
 def isoflag(n, m, flag):

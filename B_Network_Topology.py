@@ -1,13 +1,10 @@
 from collections import defaultdict
-x = input()
-t = x.split()
-n = int(t[0])
-m = int(t[1])
+
+n, m = map(int, input().split())
 
 edges = [list(map(int, input().split())) for _ in range(m)]
 
 diction = defaultdict(int)
-
 
 for i, j in edges:
     diction[i] += 1
