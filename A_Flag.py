@@ -2,7 +2,7 @@ n, m = map(int, input().split())
 
 # matrix = [input().strip() for _ in range(n)]
 matrix = [input() for _ in range(n)]
-print(matrix)
+# print(matrix)
 def isoflag(n, m, flag):
     for row in flag:
         if len(set(row)) != 1:
