@@ -11,6 +11,7 @@ for i in range(0, n):
 
 visited= set()
 count =2
+depths = {"polycarp": 1}
 while queue:
     x = queue.popleft()    
 
@@ -21,10 +22,8 @@ while queue:
 
     m = y[2]
     n = m.lower()
+
+    depths[p] = depths[n]+1
  
-    if (p, n) not in visited and n != "polycarp":
-        count += 1
-        
-        visited.add((p,n))
-print(count)
+print(max(depths.values()))
     
