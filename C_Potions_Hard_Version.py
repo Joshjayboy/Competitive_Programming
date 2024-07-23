@@ -1,5 +1,23 @@
-no_of_portions = int(input())
+import heapq
 
-health = list(int(input().split()) for _ in range(no_of_portions))
+def max_potions(n, potions):
+    current_health = 0
+    min_heap = []
+    count = 0
+    
+    for potion in potions:
+        if current_health + potion >= 0:
+            current_health += potion
+            heapq.heappush(min_heap, potion)
+            count += 1
+        elif min_heap and potion > min_heap[0]:
+            current_health += potion - heapq.heappop(min_heap)
+            heapq.heappush(min_heap, potion)
+    
+    return count
 
-print(health)
+n = int(input().strip())
+potions = list(map(int, input().strip().split()))
+
+result = max_potions(n, potions)
+print(result)
