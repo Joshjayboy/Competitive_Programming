@@ -1,2 +1,3 @@
 for i in range(int(input())):
-    print(i)
+    for j in range(q):
+        print(j)
