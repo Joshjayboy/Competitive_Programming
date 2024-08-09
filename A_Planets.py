@@ -1,4 +1,3 @@
-# Input reading and processing
 import sys
 input = sys.stdin.read
 data = input().split()
@@ -37,9 +36,5 @@ def minimum_destruction_cost(t, test_cases):
     return results
 
 results = minimum_destruction_cost(t, test_cases)
-
-
-
-
 for result in results:
     print(result)
