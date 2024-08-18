@@ -27,6 +27,7 @@ for i in range(n):
         current = suffix[i+1]
     elif i == n-1:
         current = prefix[i-1]
+        # This is an event
     else:
         current = gcd(prefix[i-1], suffix[i+1])
     maxi = max(maxi, current)
