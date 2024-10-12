@@ -1,0 +1,1 @@
+permutation, mergesort = map(int, input().split())

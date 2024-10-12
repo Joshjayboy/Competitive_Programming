@@ -1,45 +1,47 @@
-# test_cases = int(input())
-# for i in range(test_cases):
-#     val = int(input())
+import sys
 
 MOD = 10**9 + 7
 
-# Function to generate all palindromic numbers up to 40000
+
 def generate_palindromes(limit):
     palindromes = []
-    
-    # Single digit palindromes
+
     for i in range(1, 10):
         palindromes.append(i)
-    
-    # Two-digit and more palindromes
-    for i in range(1, 400):
+
+    for i in range(1, 10000):
         s = str(i)
-        palindromes.append(int(s + s[::-1]))  # Even length palindromes
-        palindromes.append(int(s + s[-2::-1]))  # Odd length palindromes
-    
+        palindromes.append(int(s + s[::-1]))
+        if int(s + s[::-1]) > limit:
+            break
+        for j in range(10):
+            palindromes.append(int(s + str(j) + s[::-1]))
+            if int(s + str(j) + s[::-1]) > limit:
+                break
     return [p for p in palindromes if p <= limit]
 
-# Main solution function
-def solve():
-    # Step 1: Generate all palindromic numbers up to 40000
-    palindromes = generate_palindromes(40000)
-    
-    # Step 2: Initialize DP array
-    max_n = 40000
-    dp = [0] * (max_n + 1)
-    dp[0] = 1  # Base case, 1 way to sum to 0 (using no numbers)
-    
-    # Step 3: Fill DP array using palindromes
-    for p in palindromes:
-        for i in range(p, max_n + 1):
-            dp[i] = (dp[i] + dp[i - p]) % MOD
-    
-    # Step 4: Read input and process each test case
-    t = int(input())
-    for _ in range(t):
-        n = int(input())
-        print(dp[n])
+palidromes = generate_palindromes(40000)
 
-# Run the solution
-solve()
+def count_partitions(n):
+    dp = [0] * (n + 1)
+    dp[0] = 1
+
+    for p in palidromes:
+        for i in range(p, n + 1):
+            dp[i] = (dp[i] + dp[i - p]) % MOD
+    return dp
+
+MAX_N = 40000
+dp = count_partitions(MAX_N)
+
+input = sys.stdin.read
+data = input().split()
+
+t = int(data[0])
+output = []
+
+for i in range(1, t + 1):
+    n = int(data[i])
+    output.append(str(dp[n]))
+
+sys.stdout.write("\n".join(output) + "\n")
